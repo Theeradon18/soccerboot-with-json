@@ -259,3 +259,4 @@ const styles = StyleSheet.create({
     color: COLORS.textSecondary,
   },
 });
+//update 1.0.0
