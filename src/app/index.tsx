@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
 import {
   FlatList,
   Image,
@@ -9,29 +10,22 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-const productsData = [
-  {
-    id: "1",
-    name: "PREDATOR ELITE Fold-Over Tongue Firm Ground Football Boots",
-    category: "soccer shoes",
-    price: 350,
-    image: require("../../assets/images/soccer1.jpg"),
-  },
-  {
-    id: "2",
-    name: "Nike Socks Mercurial Vapor 16 Academy",
-    category: "soccer shoes",
-    price: 490,
-    image: require("../../assets/images/soccer2.jpg"),
-  },
-  {
-    id: "3",
-    name: "Sfida Blast Junior Football Boots",
-    category: "soccer shoes",
-    price: 650,
-    image: require("../../assets/images/soccer3.jpg"),
-  },
-];
+
+const GITHUB_JSON_URL =
+  "https://raw.githubusercontent.com/Theeradon18/soccerboot-with-json/refs/heads/main/product.json";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  stock?: number;
+  stock_text?: string;
+  category: string;
+  location_count?: number;
+  location_text?: string;
+  badge_status?: string;
+  image_url: string;
+}
 
 const COLORS = {
   primary: "#2563EB",
@@ -44,6 +38,22 @@ const COLORS = {
 };
 
 export default function HomeScreen() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(GITHUB_JSON_URL);
+      const data: Product[] = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -51,7 +61,7 @@ export default function HomeScreen() {
         <TouchableOpacity style={styles.iconButton}>
           <Ionicons name="menu" size={24} color={COLORS.text} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Pillow</Text>
+        <Text style={styles.headerTitle}>SoccerBoot</Text>
         <TouchableOpacity style={styles.profileButton}>
           <Ionicons name="person" size={18} color="#fff" />
         </TouchableOpacity>
@@ -79,14 +89,14 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Product List (Local Assets) */}
+      {/* Product List */}
       <FlatList
-        data={productsData}
+        data={products}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ padding: 16 }}
         renderItem={({ item }) => (
           <View style={styles.card}>
-            <Image source={item.image} style={styles.image} />
+            <Image source={{ uri: item.image_url }} style={styles.image} />
             <Text style={styles.name}>{item.name}</Text>
             <Text style={styles.brand}>{item.category}</Text>
             <Text style={styles.price}>{item.price.toLocaleString()} บาท</Text>
