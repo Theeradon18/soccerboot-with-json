@@ -1,0 +1,39 @@
+[
+  {
+    "id": "1",
+    "name": "PREDATOR ELITE Fold-Over Tongue Firm Ground Football Boots",
+    "price": 350,
+    "stock": 10,
+    "stock_text": "10 in stock",
+    "category": "Football Boots",
+    "location_count": 2,
+    "location_text": "2 locations",
+    "badge_status": "Available",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUeAajuabURaGvBUvLdhR5mgAn3TBcUgOz-OI2eQ6oYg&s=10"
+  },
+  {
+    "id": "2",
+    "name": "Nike Socks Mercurial Vapor 16 Academy",
+    "price": 490,
+    "stock": 5,
+    "stock_text": "5 in stock",
+    "category": "Football Boots",
+    "location_count": 3,
+    "location_text": "3 locations",
+    "badge_status": "Available",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh5c5oOO_S1gAPJjDJRT26fvmh3qPjKuTMUNCePTeRWw&s=10"
+  },
+  {
+    "id": "3",
+    "name": "Sfida Blast Junior Football Boots",
+    "price": 650,
+    "stock": 2,
+    "stock_text": "Only 2 left",
+    "category": "Football Boots",
+    "location_count": 1,
+    "location_text": "1 location",
+    "badge_status": "Low Stock",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3UHi197qu9jJEUmJGo29f6FbsHT-nplYatQ3zM4HXAA&s=10"
+  }
+]
+//update 1.0.0
